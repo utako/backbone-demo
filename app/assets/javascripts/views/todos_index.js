@@ -4,7 +4,7 @@ window.Todo.Views.TodosIndex = Backbone.View.extend({
   events: {
     "click button.refresh": "refresh"
   },
-  
+
   initialize: function (options) {
     this.listenTo(
       this.collection,

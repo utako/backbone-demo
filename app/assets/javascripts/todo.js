@@ -1,18 +1,14 @@
 window.Todo = {
   Models: {},
   Collections: {},
+  Routers: {},
   Views: {},
 
   initialize: function () {
-    var indexView = new Todo.Views.TodosIndex({
-      collection: Todo.Collections.todos
-    });
-    
-    Todo.Collections.todos.fetch();
-    $("body").append(indexView.render().$el);
-
-    var newView = new Todo.Views.TodosNew();
-    $("body").append(newView.render().$el);
+    // just sets up the routes
+    new Todo.Routers.AppRouter();
+    // start listening to changes to the location
+    Backbone.history.start();
   }
 };
 
