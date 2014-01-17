@@ -1,0 +1,10 @@
+<h3>Index</h3>
+
+<ul>
+  <% todos.each(function (todo) { %>
+    <!-- Still using get! -->
+    <li><%= todo.get("title") %></li>
+  <% }) %>
+</ul>
+
+<button class="refresh">Refresh</button>
