@@ -1,11 +1,6 @@
 <h3><%= todo.get("title") %></h3>
 
-<ul>
-  <% todo.comments().each(function (comment) { %>
-    <li><%= marked(comment.escape("content")) %></li>
-  <% }) %>
-</ul>
-
+<ul class="comments"></ul>
 <div class="comment-new"></div>
 
 <a href="#/">Back to Index</a>

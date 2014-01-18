@@ -9,7 +9,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = TodoComment.find(params[:id])
     @comment.destroy
     render "comments/show"
   end
