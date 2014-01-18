@@ -1,3 +1,9 @@
 <h3><%= todo.get("title") %></h3>
 
+<ul>
+  <% todo.comments().each(function (comment) { %>
+    <li><%= comment.get("content") %></li>
+  <% }) %>
+</ul>
+
 <a href="#/">Back to Index</a>
