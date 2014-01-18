@@ -21,7 +21,6 @@ window.Todo.Routers.AppRouter = Backbone.Router.extend({
   
   todosShow: function (id) {
     var todo = Todo.Collections.todos.getOrFetch(id);
-    todo.comments().fetch();
 
     var showView = new Todo.Views.TodosShow({
       model: todo
