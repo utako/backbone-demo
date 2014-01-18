@@ -8,6 +8,12 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    render "comments/show"
+  end
+
   def index
     @comments = TodoComment.where(:todo_id => params[:todo_id])
     render "comments/index"

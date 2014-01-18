@@ -6,6 +6,6 @@ BackboneDemo::Application.routes.draw do
       resources :comments, :only => [:index]
     end
 
-    resources :comments, :only => [:create, :show]
+    resources :comments, :only => [:create, :destroy, :show]
   end
 end
