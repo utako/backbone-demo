@@ -11,14 +11,14 @@ window.Todo.Routers.AppRouter = Backbone.Router.extend({
     });
 
     Todo.Collections.todos.fetch();
-    $("body").html(indexView.render().$el);
+    this._swapView(indexView);
   },
 
   todosNew: function () {
     var newView = new Todo.Views.TodosNew();
-    $("body").html(newView.render().$el);
+    this._swapView(newView);
   },
-  
+
   todosShow: function (id) {
     var todo = Todo.Collections.todos.getOrFetch(id);
 
@@ -26,6 +26,15 @@ window.Todo.Routers.AppRouter = Backbone.Router.extend({
       model: todo
     });
     
-    $("body").html(showView.render().$el);
+    this._swapView(showView);
+  },
+
+  _swapView: function (view) {
+    if (this.currentView) {
+      this.currentView.remove();
+    }
+    this.currentView = view;
+
+    $("body").html(view.render().$el);
   }
 });
