@@ -39,7 +39,11 @@ window.Todo.Views.CommentsNew = Backbone.View.extend({
     var comment = new Todo.Models.Comment(params);
     
     comment.save({}, {
-      success: function () { view.todo.comments().add(comment) }
+      success: function () {
+        view.todo.comments().add(comment);
+        view.$('textarea[name=comment\\[content\\]]').val("");
+        view.renderPreview();
+      }
     });
   }
 });
