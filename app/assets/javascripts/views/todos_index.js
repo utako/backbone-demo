@@ -33,5 +33,9 @@ window.Todo.Views.TodosIndex = Backbone.TableView.extend({
     this.renderSubviews();
 
     return this;
+  },
+
+  _lowerTitle: function (model) {
+    return model.get("title").toLowerCase();
   }
 });

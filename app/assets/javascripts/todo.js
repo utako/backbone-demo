@@ -74,7 +74,7 @@ Backbone.TableView = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-    this.sortCol = null;
+    this.sortFn = null;
 
     this.listenTo(this.collection, "add", this.addRowSubview);
 
@@ -91,7 +91,13 @@ Backbone.TableView = Backbone.CompositeView.extend({
   },
 
   resort: function (event) {
-    this.sortCol = $(event.currentTarget).data("col");
+    var $currentTarget = $(event.currentTarget);
+    if ($currentTarget.data("sort-col")) {
+      this.sortFn = this._sortColFn($currentTarget.data("sort-col"));
+    } else {
+      this.sortFn = this[$currentTarget.data("sort-fn")];
+    }
+
     this._sortRowSubviews();
     this.renderSubviews();
   },
@@ -101,8 +107,8 @@ Backbone.TableView = Backbone.CompositeView.extend({
     
     var rowSubviews = this.subviews()["tbody"];
     rowSubviews.sort(function (rowView1, rowView2) {
-      var val1 = rowView1.model.get(tableView.sortCol);
-      var val2 = rowView2.model.get(tableView.sortCol);
+      var val1 = tableView.sortFn(rowView1.model);
+      var val2 = tableView.sortFn(rowView2.model);
 
       if (val1 < val2) {
         return -1;
@@ -112,6 +118,12 @@ Backbone.TableView = Backbone.CompositeView.extend({
         return 1;
       }
     });
+  },
+
+  _sortColFn: function (col) {
+    return function (model) {
+      return model.get(col);
+    };
   }
 });
 
