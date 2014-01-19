@@ -19,6 +19,8 @@ window.Todo.Views.CommentsShow = Backbone.View.extend({
   },
 
   endEditing: function (event) {
+    event.preventDefault();
+
     this.open = false;
 
     var content = this.$("textarea.comment_content").val();
