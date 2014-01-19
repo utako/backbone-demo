@@ -66,4 +66,53 @@ Backbone.CompositeView = Backbone.View.extend({
   }
 });
 
+Backbone.TableView = Backbone.CompositeView.extend({
+  rowSubviewClass: null,
+
+  events: {
+    "click th": "resort"
+  },
+
+  initialize: function () {
+    this.sortCol = null;
+
+    this.listenTo(this.collection, "add", this.addRowSubview);
+
+    this.collection.each(this.addRowSubview.bind(this));
+  },
+
+  addRowSubview: function (model) {
+    var rowSubview = new this.rowSubviewClass({
+      model: model
+    });
+
+    this.addSubview("tbody", rowSubview);
+    rowSubview.render();
+  },
+
+  resort: function (event) {
+    this.sortCol = $(event.currentTarget).data("col");
+    this._sortRowSubviews();
+    this.renderSubviews();
+  },
+
+  _sortRowSubviews: function () {
+    var tableView = this;
+    
+    var rowSubviews = this.subviews()["tbody"];
+    rowSubviews.sort(function (rowView1, rowView2) {
+      var val1 = rowView1.model.get(tableView.sortCol);
+      var val2 = rowView2.model.get(tableView.sortCol);
+
+      if (val1 < val2) {
+        return -1;
+      } else if (val1 == val2) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+});
+
 $(Todo.initialize);

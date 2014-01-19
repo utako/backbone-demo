@@ -1,14 +1,16 @@
 <h3>Index</h3>
 
 <button class="refresh">Refresh</button>
-<ul>
-  <% todos.each(function (todo) { %>
-    <li>
-      <a href="#/todos/<%= todo.escape("id") %>">
-        <%= todo.escape("title") %>
-      </a>
-    </li>
-  <% }) %>
-</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th data-col="id">id</th>
+      <th data-col="title">title</th>
+    </tr>
+  </thead>
+
+  <tbody></tbody>
+</table>
 
 <a href="#/todos/new">New Todo</a>
