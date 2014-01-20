@@ -11,4 +11,5 @@ end
 gem 'ejs'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sqlite3'

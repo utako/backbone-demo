@@ -38,6 +38,12 @@ window.Todo.Views.TodosShow = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
+
+    this.$(".comments").sortable({
+      "axis": "y",
+      "update": function (event, ui) { ui.item.trigger("move") }
+    });
+
     this.renderSubviews();
 
     return this;
