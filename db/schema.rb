@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117003325) do
+ActiveRecord::Schema.define(:version => 20140120001821) do
 
   create_table "todo_comments", :force => true do |t|
     t.integer  "todo_id",    :null => false
     t.text     "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "order_num",  :null => false
   end
 
   add_index "todo_comments", ["todo_id"], :name => "index_todo_comments_on_todo_id"
