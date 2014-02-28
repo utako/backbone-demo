@@ -1,5 +1,10 @@
 <form>
   <input type="hidden" name="comment[todo_id]" value="<%= todo.escape("id") %>">
+  
+  <input
+    type="filepicker"
+    name="comment[image_url]"
+    data-fp-mimetype="image/*">
 
   <textarea name="comment[content]"></textarea>
   <input type="submit">

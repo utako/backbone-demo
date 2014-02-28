@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120001821) do
+ActiveRecord::Schema.define(:version => 20140127044630) do
 
   create_table "todo_comments", :force => true do |t|
     t.integer  "todo_id",    :null => false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140120001821) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.float    "order_num",  :null => false
+    t.string   "image_url"
   end
 
   add_index "todo_comments", ["todo_id"], :name => "index_todo_comments_on_todo_id"

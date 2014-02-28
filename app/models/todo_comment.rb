@@ -1,5 +1,5 @@
 class TodoComment < ActiveRecord::Base
-  attr_accessible :content, :order_num, :todo_id
+  attr_accessible :content, :image_url, :order_num, :todo_id
 
   belongs_to :todo
 

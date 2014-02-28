@@ -20,6 +20,8 @@ window.Todo.Views.CommentsNew = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent);
+    var $filePickerInput = this.$("input[type=filepicker]");
+    filepicker.constructWidget($filePickerInput[0]);
 
     return this;
   },
