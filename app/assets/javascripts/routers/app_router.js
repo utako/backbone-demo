@@ -9,7 +9,7 @@ window.Todo.Routers.AppRouter = Backbone.Router.extend({
     var indexView = new Todo.Views.TodosIndex({
       collection: Todo.Collections.todos
     });
-    
+
     Todo.Collections.todos.fetch();
     $("body").html(indexView.render().$el);
   },
@@ -20,11 +20,10 @@ window.Todo.Routers.AppRouter = Backbone.Router.extend({
   },
   
   todosShow: function (id) {
-    // troubling!
-    var model = Todo.Collections.todos.get(id);
+    var todo = Todo.Collections.todos.getOrFetch(id);
 
     var showView = new Todo.Views.TodosShow({
-      model: model
+      model: todo
     });
     
     $("body").html(showView.render().$el);

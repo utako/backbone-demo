@@ -9,5 +9,6 @@ group :assets do
 end
 
 gem 'ejs'
+gem 'jbuilder'
 gem 'jquery-rails'
 gem 'sqlite3'
